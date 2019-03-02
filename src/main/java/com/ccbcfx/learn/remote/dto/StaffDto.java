@@ -5,12 +5,14 @@ import com.ccbcfx.learn.enums.GenderType;
 import com.ccbcfx.learn.enums.StaffStatusType;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
 public class StaffDto {
+    private int id;
     private String name;
-    private LocalDateTime birthday;
+    private LocalDate birthday;
     private String phone;
     private GenderType gender;
     private String imgUrl;
