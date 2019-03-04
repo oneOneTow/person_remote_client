@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class StaffDto {
-    private int id;
+    private Integer id;
     private String name;
     private LocalDate birthday;
     private String phone;
@@ -19,10 +19,10 @@ public class StaffDto {
     private DocumentType documentType;
     private String documentNumber;
     private StaffStatusType status;
-    private String createBy;
+    private Integer createBy;
     private LocalDateTime createAt;
-    private String updateBy;
+    private Integer updateBy;
     private LocalDateTime updateAt;
-    private String deleteBy;
+    private Integer deleteBy;
     private LocalDateTime deleteAt;
 }
