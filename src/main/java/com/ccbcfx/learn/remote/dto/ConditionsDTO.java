@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
-public class ConditionsDto {
+public class ConditionsDTO {
     private String name;
     private LocalDate birthday;
     private DocumentType documentType;

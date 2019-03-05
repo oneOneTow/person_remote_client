@@ -1,13 +1,13 @@
 package com.ccbcfx.learn.remote.client;
 
 
-import com.ccbcfx.learn.remote.dto.ConditionsDto;
-import com.ccbcfx.learn.remote.dto.StaffDto;
+import com.ccbcfx.learn.remote.dto.ConditionsDTO;
+import com.ccbcfx.learn.remote.dto.PageStaffDTO;
+import com.ccbcfx.learn.remote.dto.StaffDTO;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
-import java.util.List;
 
 @FeignClient("server-person")
 public interface StaffService {
@@ -18,7 +18,7 @@ public interface StaffService {
      * @return
      */
     @RequestMapping(value = "/staff", method = RequestMethod.POST)
-    int createStaff(@RequestBody StaffDto staff);
+    int createStaff(@RequestBody StaffDTO staff);
 
     /**
      * 删除数据根据id
@@ -39,8 +39,8 @@ public interface StaffService {
      * @return
      */
     @PutMapping(path = "/staff/{id}")
-    StaffDto updateStaff(@PathVariable(value = "id") int id,
-                         @RequestBody StaffDto staffDto);
+    boolean updateStaff(@PathVariable(value = "id") int id,
+                         @RequestBody StaffDTO staffDto);
 
     /**
      * 上传头像
@@ -50,7 +50,7 @@ public interface StaffService {
      * @return
      */
     @RequestMapping(path = "/staff/profile/{id}",
-            method = RequestMethod.PATCH)
+            method = RequestMethod.PUT)
     boolean updateStaffPortrait(@PathVariable(value = "id") int id,
                                 @RequestParam(value = "imgUrl") String imgUrl);
 
@@ -60,7 +60,7 @@ public interface StaffService {
      * @return StaffDto
      */
     @GetMapping(path = "/staff/{id}")
-    StaffDto getStaff(@PathVariable(value = "id") int id);
+    StaffDTO getStaff(@PathVariable(value = "id") int id);
 
     /**
      * 根据条件查询数据
@@ -71,9 +71,20 @@ public interface StaffService {
      * @return
      */
     @PostMapping(path = "/staff/search")
-    List<StaffDto> getStaffs(@RequestBody ConditionsDto conditionsDto,
+    PageStaffDTO getStaffs(@RequestBody ConditionsDTO conditionsDto,
                              @RequestParam(value = "offset") int offset,
                              @RequestParam(value = "size") int size);
+
+    /**
+     * 批量查询数据
+     *
+     * @param offset
+     * @param size
+     * @return
+     */
+    @GetMapping(path = "/staff/list")
+    PageStaffDTO getStaffList(@RequestParam(value = "offset") int offset,
+                              @RequestParam(value = "size") int size);
 
     /**
      * 员工离职

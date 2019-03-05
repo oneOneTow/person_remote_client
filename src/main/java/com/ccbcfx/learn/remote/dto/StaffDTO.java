@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
-public class StaffDto {
+public class StaffDTO {
     private Integer id;
     private String name;
     private LocalDate birthday;
