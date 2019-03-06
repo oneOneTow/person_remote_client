@@ -1,5 +1,6 @@
 package com.ccbcfx.learn.remote.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
  * @CreateDate: 2019/3/5 15:47
  */
 @Data
+@AllArgsConstructor
 public class PageStaffDTO {
     private Integer total;
     private List<StaffDTO> staffDtoList;
